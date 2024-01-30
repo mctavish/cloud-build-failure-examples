@@ -1,0 +1,6 @@
+steps:
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  script: |
+    #!/usr/bin/env bash
+    gcloud run deploy my-backend --image=us-docker.pkg.dev/project/image
+tags: ["cloud-build-failures"]

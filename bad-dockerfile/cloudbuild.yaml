@@ -1,0 +1,10 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  script: |
+    #!/usr/bin/env bash
+    docker build . -t $_TARGET_REPO_TAG
+    docker push $_TARGET_REPO_TAG
+  automapSubstitutions: true
+tags: ["cloud-build-failures"]
+
+
