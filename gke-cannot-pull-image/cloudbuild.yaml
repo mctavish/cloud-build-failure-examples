@@ -1,0 +1,12 @@
+steps:
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  script: |
+    #!/usr/bin/env bash
+    apt-get install gettext-base # for envsubt
+    gcloud container clusters get-credentials $_CLUSTER_NAME --region=$_CLUSTER_REGION --project=$PROJECT_ID
+    envsubst < k8.yaml | kubectl apply -f -
+    kubectl rollout status deployment/test-deployment --timeout 1m
+  automapSubstitutions: true
+options:
+  substitutionOption: "ALLOW_LOOSE"
+tags: ["cloud-build-failures"]
