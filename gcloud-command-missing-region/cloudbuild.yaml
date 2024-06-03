@@ -4,3 +4,5 @@ steps:
     #!/usr/bin/env bash
     gcloud run deploy my-backend --image=us-docker.pkg.dev/project/image --region=us-central1
 tags: ["cloud-build-failures"]
+options:
+  logging: CLOUD_LOGGING_ONLY
